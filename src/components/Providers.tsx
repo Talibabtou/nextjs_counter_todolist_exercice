@@ -1,9 +1,7 @@
 'use client';
 
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from '@/store/store';
-import { NotificationProvider } from '@/contexts/NotificationContext';
+import { store } from '@/store/store';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -12,11 +10,7 @@ interface ProvidersProps {
 export default function Providers({ children }: ProvidersProps) {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <NotificationProvider>
-          {children}
-        </NotificationProvider>
-      </PersistGate>
+      {children}
     </Provider>
   );
 }
